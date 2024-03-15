@@ -1,14 +1,100 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Life</title>
-    <script src="life.js"></script>
-    <style type="text/css">
-      canvas { border: 1px solid black; }
+<style type='text/css'>
+    div {
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:100%;
+        height:100%;
+    }
     </style>
-  </head>
-  <body onload="life('canvas',4,0)">
-    <canvas id="canvas" width="500" height="500"></canvas>
-  </body>
-</html>
+    <script type="text/javascript">
+    function drawGrid(){
+        var x=canvas.width/2-40;
+        var y=canvas.height/2;
+        for (var i=0.5;i<=80.5;i+=10){
+            context.moveTo(x+i,y);
+            context.lineTo(x+i,y-80);
+        }
+        for (var i=0.5;i<=80.5;i+=10){
+            context.moveTo(x,y-i);
+            context.lineTo(x+80,y-i);
+        }
+        context.strokeStyle='#ddd';
+        context.stroke();
+    }
+    
+    function drawMan(){
+    //	context.moveTo(Math.floor(canvas.width/2),Math.floor(canvas.hegiht/2));
+        context.beginPath();
+        var x=canvas.width/2+0.5;
+        var y=canvas.height/2-0.5;
+        context.moveTo(x,y);
+        //between legs
+        y-=40;
+        context.lineTo(x,y);
+        y+=40;	
+        context.moveTo(x,y);
+        //armpit
+        x-=7.5;
+        context.lineTo(x,y);
+        y-=65;
+        context.lineTo(x,y);
+        y+=22.5;	
+        context.moveTo(x,y);
+        //left arm
+        x-=5;
+        context.lineTo(x,y);
+        y-=27.5;
+        context.lineTo(x,y);
+        x+=7.5;
+        context.lineTo(x,y);
+        //head
+        y-=10;
+        context.lineTo(x,y);
+        x+=10;
+        context.lineTo(x,y);
+        y+=10;
+        context.lineTo(x,y);
+        //right arm
+        x+=7.5;
+        context.lineTo(x,y);
+        y+=27.5;
+        context.lineTo(x,y);
+        x-=5;
+        context.lineTo(x,y);
+        //arm pit
+        y-=22.5;
+        context.lineTo(x,y);
+        y+=55;	
+        context.lineTo(x,y);
+        //
+        y+=10;
+        context.lineTo(x,y);
+        x-=7.5;
+        context.lineTo(x,y);
+        
+        //
+        context.strokeStyle='#000';
+        context.stroke();
+    }
+    </script>
+    </head>
+    <body>
+    <div>
+    <canvas></canvas>
+    </div>
+    <script type='text/javascript'>
+    //get div to gain access to window size
+    div=document.getElementsByTagName('div')[0];
+    //set canvas size to the whole window 
+    canvas=document.getElementsByTagName('canvas')[0];
+    canvas.width=div.scrollWidth;
+    canvas.height=div.scrollHeight;
+    //
+    context = canvas.getContext('2d');
+    drawGrid();
+    drawMan();
+    </script>
+    </body>
+    </html>
+    
