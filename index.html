@@ -1,16 +1,16 @@
 <style type='text/css'>
     div {
         position:absolute;
-        left:100px;
-        top:100px;
-        width:30%; 
-        height:30%; 
+        left:0px;
+        top:0px;
+        /* width:30%;  */
+        /* height:30%;  */
     }
     </style>
     <script type="text/javascript">
     function drawGrid(){
         var x=canvas.width/2-40;
-        var y=canvas.height/2;
+        var y=canvas.height/2+40;
         for (var i=0.5;i<=80.5;i+=10){
             context.moveTo(x+i,y);
             context.lineTo(x+i,y-80);
@@ -27,7 +27,7 @@
     //	context.moveTo(Math.floor(canvas.width/2),Math.floor(canvas.hegiht/2));
         context.beginPath();
         var x=canvas.width/2+0.5;
-        var y=canvas.height/2-0.5;
+        var y=canvas.height/2+0.5+40;
         context.moveTo(x,y);
         //between legs
         y-=40;
